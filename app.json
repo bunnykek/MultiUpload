@@ -18,11 +18,11 @@
         },
         "api_id": {
             "description": "Get your api_id from https://my.telegram.org/apps",
-            "value": "XXXXXXXXXX"
+            "value": "12345"
         },
         "api_hash": {
             "description": "Get your api_hash from https://my.telegram.org/apps",
-            "value": "[...]"
+            "value": "0123456789abcdef0123456789abcdef"
         },
         "default_host_id": {
             "description": "Default host id to use",
