@@ -47,7 +47,10 @@ Telegram bot to upload your GDrive/Telegram files to 10+ free hosting services
 - Deploy to heroku 
 #### Heroku Deploy
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/bunnykek/MultiUpload)
-
+#### Bot commands:
+- `/help` - Helps
+- `/stats` - Shows the total downloaded cache.
+- `/clear` - Wipes the whole cache.
 #### Credits
 - [go-upload](https://github.com/Sorrow446/go-upload) by @Sorrow446
 ##### Make sure to star my projects if you enjoy. Thanks
