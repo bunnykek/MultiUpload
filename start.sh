@@ -1,0 +1,1 @@
+chmod +x go-ul_linux_x64; python3 bot.py
