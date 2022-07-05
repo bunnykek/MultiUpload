@@ -1,7 +1,6 @@
 # MultiUpload
-Telegram bot to upload your GDrive/Telegram files to 10+ free hosting services
-
-### Supported hosts:
+Upload your files to 10+ free hosting services.
+#### Supported hosts:
 ```
 +----+-------------+---------+
 |    |     Host    | MaxSize |
@@ -35,7 +34,7 @@ Telegram bot to upload your GDrive/Telegram files to 10+ free hosting services
 | 14 |  zippyshare |  500 MB |
 +----+-------------+---------+
 ```
-### Setup procedure:
+#### Setup procedure:
 
 - Follow [this guide](https://www.iperiusbackup.net/en/how-to-enable-google-drive-api-and-get-client-credentials/), but at the last step instead of selecting application as `web application` use `desktop app`   
 
