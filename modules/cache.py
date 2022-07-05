@@ -6,7 +6,7 @@ import subprocess
 
 def CacheSize(msg):
     print("Getting cache size", flush=True)
-    output = subprocess.check_output(['du','-sh']).decode('utf-8')
+    output = subprocess.check_output(['du','-sh', 'Downloads']).split()[0].decode('utf-8')
     msg.reply_text("Cache size: " + output)
 
 def clearCache(msg):
