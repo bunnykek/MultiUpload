@@ -1,0 +1,37 @@
+{
+    "name": "MultiUpload",
+    "description": "Telegram bot to upload your GDrive/Telegram files to 10+ free hosting services.",
+    "repository": "https://github.com/bunnykek/MultiUpload",
+    "logo": "https://imgur.com/UsUog2Z.png",
+    "keywords": [
+        "telegram",
+        "telegram-bot"
+    ],
+    "env": {
+        "authorized_list": {
+            "description": "List of authorized groups/users id",
+            "value": "[12312444324, -121324324235, -121324324235]"
+        },
+        "bot_token": {
+            "description": "Get your bot's token from https://telegram.me/BotFather ",
+            "value": "XXXXXXXXXX:YYYYYYYYYYYYYYYYYYYYYYYYY"
+        },
+        "api_id": {
+            "description": "Get your api_id from https://my.telegram.org/apps",
+            "value": "XXXXXXXXXX"
+        },
+        "api_hash": {
+            "description": "Get your api_hash from https://my.telegram.org/apps",
+            "value": "[...]"
+        },
+        "default_host_id": {
+            "description": "Default host id to use",
+            "value": "12"
+        },
+        "token_json": {
+            "description": "token.json file contents",
+            "value": "{...}"
+        }
+    },
+    "stack": "container"
+}
