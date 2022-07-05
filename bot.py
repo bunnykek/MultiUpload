@@ -3,6 +3,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from modules.gdrive import gdriveDownload
 from modules.tg import tgDownload
+from modules.ddl import ddlDownload, URLRx
 from modules.cache import CacheSize, clearCache
 import os
 from dotenv import load_dotenv
@@ -10,7 +11,6 @@ import re
 load_dotenv()
 
 service_id_rx = re.compile("#(\d{1,2})")
-
 authorized_list = json.loads(os.getenv('authorized_list'))
 
 app = Client("my_account", api_id=os.getenv('api_id'),
@@ -49,7 +49,7 @@ help_message = """**Supported upload hosts:**`
 | 14 |  zippyshare |  500 MB |
 +----+-------------+---------+`
 
-**Supported links: G-Drive url, TG file**
+**Supported links: G-Drive url, TG file, DDL**
 
 ex: Gdrive to anonfiles:
 `/up gdrive-url #1`
@@ -57,7 +57,7 @@ ex: Gdrive to anonfiles:
 ex: TG file to WeTransfer:
 reply to a file with `/up #12`
 
-**Made by @pseudoboi 🧪**
+**Made by [bunny](https://t.me/pseudoboi) 🧪**
 """
 if not os.path.exists('Downloads'):
     os.makedirs('Downloads')
@@ -70,7 +70,7 @@ def echo(client, message: Message):
         return
 
     if '/help' in message.text:
-        message.reply(help_message)
+        message.reply(help_message, disable_web_page_preview=True, quote=True)
         return
     try:
         if '/up' in message.text:
@@ -88,6 +88,9 @@ def echo(client, message: Message):
             elif message.reply_to_message:
                 progressMessage =  message.reply("Please wait while I download your Telegram file...")
                 tgDownload(message, serviceID, progressMessage)
+            elif URLRx.search(message.text):
+                progressMessage =  message.reply("Please wait while I download your link...")
+                ddlDownload(message, serviceID, progressMessage)
         elif '/stats' in message.text:
             CacheSize(message)
         elif '/clear' in message.text:
