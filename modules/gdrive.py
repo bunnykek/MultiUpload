@@ -8,7 +8,7 @@ from googleapiclient.http import MediaIoBaseDownload
 
 import os
 
-SCOPES = ['https://www.googleapis.com/auth/drive']
+SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 gdriveIDRe = re.compile('([-\w]{25,})')
 
 try:
