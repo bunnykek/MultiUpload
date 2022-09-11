@@ -35,7 +35,7 @@ def tgDownload(msg: Message, serviceID: int, progressMessage: Message):
     
     file_path = os.path.join(os.getcwd(), 'Downloads', fileName)
     if not os.path.exists(file_path):
-        progressMessage.edit_text(f"Downloading: `{fileName}`")
+        message.reply(f"Downloading: `{fileName}`")
         message.download(file_path) #, progress=progress, progress_args=(progressMessage,fileName))
     upload(file_path, serviceID, msg, progressMessage)
     #os.remove(fileName)
