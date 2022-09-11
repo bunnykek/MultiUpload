@@ -2,13 +2,13 @@ import os
 from pyrogram.types import Message
 from modules.upload import upload
 
-def progress(current, total, progressMessage: Message, fileName: str):
-    if int(current * 100 / total) % 10 == 0:
-        try:
-            progressMessage.edit_text(f"Downloading: `{fileName}`\nProgress: `{current * 100 / total:.1f}%`")
-        except:
-            pass
-        print(f"{current * 100 / total:.1f}%", flush=True)
+# def progress(current, total, progressMessage: Message, fileName: str):
+#     if int(current * 100 / total) % 10 == 0:
+#         try:
+#             progressMessage.edit_text(f"Downloading: `{fileName}`\nProgress: `{current * 100 / total:.1f}%`")
+#         except:
+#             pass
+#         print(f"{current * 100 / total:.1f}%", flush=True)
 
 def tgDownload(msg: Message, serviceID: int, progressMessage: Message):
     print("processing TG", flush=True)
@@ -35,7 +35,8 @@ def tgDownload(msg: Message, serviceID: int, progressMessage: Message):
     
     file_path = os.path.join(os.getcwd(), 'Downloads', fileName)
     if not os.path.exists(file_path):
-        message.download(file_path, progress=progress, progress_args=(progressMessage,fileName))
+        progressMessage.edit_text(f"Downloading: `{fileName}`)
+        message.download(file_path) #, progress=progress, progress_args=(progressMessage,fileName))
     upload(file_path, serviceID, msg, progressMessage)
     #os.remove(fileName)
     print("done", flush=True)
