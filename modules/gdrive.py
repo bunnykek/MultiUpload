@@ -5,7 +5,6 @@ from modules.upload import upload
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
-
 import os
 
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']

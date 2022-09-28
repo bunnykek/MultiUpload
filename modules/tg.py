@@ -1,6 +1,10 @@
 import os
+import re
+from pyrogram import Client
 from pyrogram.types import Message
 from modules.upload import upload
+
+tgUrlRx = re.compile("https://t\.me/c/(\d+)/(\d+)")
 
 # def progress(current, total, progressMessage: Message, fileName: str):
 #     if int(current * 100 / total) % 10 == 0:
@@ -10,10 +14,17 @@ from modules.upload import upload
 #             pass
 #         print(f"{current * 100 / total:.1f}%", flush=True)
 
-def tgDownload(msg: Message, serviceID: int, progressMessage: Message):
+def tgDownload(client:Client, msg: Message, serviceID: int, progressMessage: Message):
     print("processing TG", flush=True)
-    message = msg.reply_to_message
-    #print(message)
+    result = tgUrlRx.search(msg.text)
+    if result:
+        chatid = '-100'+result.group(1)
+        mid = result.group(2)
+        print("chatid", chatid)
+        message = client.get_messages(chatid, int(mid))
+    else:
+        message = msg.reply_to_message
+    print("Got the message object!")
     mediaType = message.media.value
     if mediaType == 'video':
         media = message.video
@@ -35,7 +46,7 @@ def tgDownload(msg: Message, serviceID: int, progressMessage: Message):
     
     file_path = os.path.join(os.getcwd(), 'Downloads', fileName)
     if not os.path.exists(file_path):
-        message.reply(f"Downloading: `{fileName}`")
+        progressMessage.edit(f"Downloading: `{fileName}`")
         message.download(file_path) #, progress=progress, progress_args=(progressMessage,fileName))
     upload(file_path, serviceID, msg, progressMessage)
     #os.remove(fileName)
