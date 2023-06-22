@@ -50,6 +50,18 @@ Upload your files to 10+ free hosting services.
 - Deploy to heroku 
 #### Heroku Deploy
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/bunnykek/MultiUpload)
+#### VPS Deploy
+- `pip install -r requirements.txt`
+- Create a `.env` file with the following variables,
+```
+authorized_list = "[111111111]"
+bot_token = "12344556:AAAAAAABBBBBBBBBCCCCCCC"
+api_id = "123455"
+api_hash = "aaaabbbbbaaaaaddddddd"
+default_host_id = "12"
+token_json = '{"token": "XXXXXXXXXXXXXXXXXX", "refresh_token": "YYYYYYYYYYYYYYYYYY", "token_uri": "ZZZZZZZZZZZZZZZZZZ", "client_id": "XXXXXXXXXXXXXXXxx", "client_secret": "ZZZZZZZZZZZZZZZZZ", "scopes": ["https://www.googleapis.com/auth/drive.readonly"], "expiry": "2023-06-22T21:35:06.155593Z"}'
+```
+- `py bot.py`
 #### Bot commands:
 - `/help` - Helps
 - `/stats` - Shows the total downloaded cache size.
