@@ -6,16 +6,14 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 gdriveIDRe = re.compile('([-\w]{25,})')
 
-try:
-    creds = Credentials.from_authorized_user_info(json.loads(os.getenv('token_json')), SCOPES)
-    service = build('drive', 'v3', credentials=creds)
-except:
-    print("token_json ENV error!", flush=True)
-    raise Exception("token_json ENV error!")
+creds = Credentials.from_authorized_user_info(json.loads(os.getenv('token_json')), SCOPES)
+service = build('drive', 'v3', credentials=creds)
 
 
 def gdriveDownload(message: Message, serviceID: int, progressMessage: Message):

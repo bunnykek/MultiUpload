@@ -1,6 +1,4 @@
 import os
-import requests
-import requests
 from modules.upload import upload
 import subprocess
 import re

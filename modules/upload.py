@@ -3,6 +3,11 @@ import os
 from pyrogram.types import Message
 import subprocess
 
+if os.name == 'nt':
+    APP = "./go-ul_x64.exe"
+else:
+    APP = "./go-ul_x64"
+
 SERVICES = ['anonfiles', 'catbox', 'fileio', 'filemail', 'gofile', 'krakenfiles', 'letsupload', 'megaup',
             'mixdrop', 'pixeldrain', 'racaty', 'transfersh', 'uguu', 'wetransfer', 'workupload', 'zippyshare']
 
@@ -18,7 +23,7 @@ def upload(filePath: str, serviceID: int, message: Message, progressMessage: Mes
     progressMessage.edit_text(
         f"Uploading to {SERVICES[serviceID]}...\n`{file_name}` ")
 
-    subprocess.Popen(["./go-ul_linux_x64", SERVICES[serviceID],
+    subprocess.Popen([APP, SERVICES[serviceID],
                      '-f', filePath, '-j', 'response.json']).wait()
 
     response = json.load(open('response.json'))
